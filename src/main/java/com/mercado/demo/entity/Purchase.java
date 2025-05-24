@@ -1,9 +1,6 @@
 package com.mercado.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -28,5 +27,9 @@ public class Purchase {
 
     @Positive
     private BigDecimal total;
+
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Item> items = new ArrayList<>();
 
 }

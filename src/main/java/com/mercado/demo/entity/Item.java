@@ -1,6 +1,6 @@
 package com.mercado.demo.entity;
 
-import com.mercado.demo.entity.enuns.ItemType;
+import com.mercado.demo.enums.ItemType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;

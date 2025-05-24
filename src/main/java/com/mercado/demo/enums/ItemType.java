@@ -1,4 +1,4 @@
-package com.mercado.demo.entity.enuns;
+package com.mercado.demo.enums;
 
 public enum ItemType {
     KG,
