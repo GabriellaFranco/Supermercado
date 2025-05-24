@@ -7,11 +7,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class Item {
@@ -32,7 +34,7 @@ public class Item {
     @Size(max = 50)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "purchase_id")
     private Purchase purchase;
 }

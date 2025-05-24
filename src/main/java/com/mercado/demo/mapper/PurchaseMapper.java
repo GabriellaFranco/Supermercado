@@ -11,14 +11,18 @@ import org.springframework.stereotype.Component;
 public class PurchaseMapper {
 
     public Purchase toPurchase(CreatePurchaseDTO purchaseDTO) {
-        return Purchase.builder()
-                .items(purchaseDTO.itens().stream().map(createItemsDTO -> Item.builder()
-                        .type(createItemsDTO.type())
-                        .price(createItemsDTO.price())
-                        .quantity(createItemsDTO.quantity())
-                        .description(createItemsDTO.description())
-                        .build()).toList())
+        var purchase = Purchase.builder()
                 .build();
+
+        purchase.setItems(purchaseDTO.itens().stream().map(createItemsDTO -> Item.builder()
+                .type(createItemsDTO.type())
+                .price(createItemsDTO.price())
+                .quantity(createItemsDTO.quantity())
+                .description(createItemsDTO.description())
+                .purchase(purchase)
+                .build()).toList());
+
+        return purchase;
     }
 
     public GetPurchaseDTO teGetPurchaseDTO(Purchase purchase) {

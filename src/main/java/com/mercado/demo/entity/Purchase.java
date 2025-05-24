@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 public class Purchase {
@@ -28,7 +30,7 @@ public class Purchase {
     @Positive
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Builder.Default
     private List<Item> items = new ArrayList<>();
 
